@@ -538,7 +538,7 @@ nav.desktop-nav a:hover::after{width:100%;}
   letter-spacing:.17em;
   box-shadow:0 8px 20px rgba(59,47,34,.12);
 }
-.hero .btn-gold .btn-arrow{font-size:1rem;line-height:1;letter-spacing:0;transition:transform .35s ease;}
+.hero .btn-gold .btn-arrow{display:block;width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .35s ease;}
 .hero .btn-gold:hover .btn-arrow{transform:translateX(3px);}
 
 /* ===== FOOTER ===== */

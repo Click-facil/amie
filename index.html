@@ -331,7 +331,7 @@
     opacity:0;
     animation:rise 1s ease forwards 1.5s;
   }
-  .hero .btn-gold .btn-arrow{font-size:1rem;line-height:1;letter-spacing:0;transition:transform .35s ease;}
+  .hero .btn-gold .btn-arrow{display:block;width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .35s ease;}
   .hero .btn-gold:hover .btn-arrow{transform:translateX(3px);}
   .hero-sub .dot{color:var(--gold);margin:0 10px;}
   @keyframes rise{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
@@ -767,7 +767,7 @@
   <div class="bloom b2"></div>
   <img class="hero-logo" src="amie-baby-logo.png" alt="Amié Baby">
   <p class="hero-tag">Vestir a infância com <em>delicadeza</em></p>
-  <a class="btn-gold" href="#sobre">Conheça a Amié <span class="btn-arrow" aria-hidden="true">→</span></a>
+  <a class="btn-gold" href="#sobre">Conheça a Amié <svg class="btn-arrow" viewBox="0 0 18 16" aria-hidden="true"><path d="M2 8h13M10 3.5 15 8l-5 4.5"/></svg></a>
   <div class="scroll-cue"></div>
 </section>
 
@@ -828,7 +828,6 @@
 <section class="depoimentos" id="depoimentos">
   <div class="wrap">
     <div class="section-head reveal">
-        <span class="eyebrow">Vitrine</span>
       <h2 class="headline">Palavras que aquecem o nosso coração</h2>
     </div>
     <div class="depo-grid">
