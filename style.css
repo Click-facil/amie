@@ -514,18 +514,32 @@ nav.desktop-nav a:hover::after{width:100%;}
 .btn-gold{
   display:inline-flex;
   align-items:center;
-  gap:10px;
+  gap:12px;
   background:var(--gold);
   color:var(--cream);
-  padding:15px 32px;
-  border-radius:2px;
-  font-size:.78rem;
-  letter-spacing:.16em;
+  padding:12px 22px;
+  border:1px solid rgba(242,233,228,.55);
+  border-radius:999px;
+  font-size:.68rem;
+  letter-spacing:.17em;
   text-transform:uppercase;
   font-weight:500;
-  transition:background .35s ease, transform .35s ease;
+  box-shadow:0 8px 20px rgba(59,47,34,.12);
+  transition:background .35s ease, transform .35s ease, box-shadow .35s ease;
 }
-.btn-gold:hover{background:#a37e4c;transform:translateY(-2px);}
+.btn-gold:hover{background:#a37e4c;transform:translateY(-2px);box-shadow:0 12px 24px rgba(59,47,34,.18);}
+.btn-gold .instagram-icon{width:16px;height:16px;flex-shrink:0;}
+.hero .btn-gold{
+  gap:12px;
+  padding:12px 18px 12px 22px;
+  border:1px solid rgba(242,233,228,.55);
+  border-radius:999px;
+  font-size:.68rem;
+  letter-spacing:.17em;
+  box-shadow:0 8px 20px rgba(59,47,34,.12);
+}
+.hero .btn-gold .btn-arrow{font-size:1rem;line-height:1;letter-spacing:0;transition:transform .35s ease;}
+.hero .btn-gold:hover .btn-arrow{transform:translateX(3px);}
 
 /* ===== FOOTER ===== */
 footer{
