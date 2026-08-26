@@ -6,7 +6,7 @@
 <title>Amié Baby — Moda Infantil</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --cream:#F2E9E4;
@@ -16,8 +16,8 @@
     --gold-faint: rgba(186,144,89,.10);
     --ink:#3B2F22;
     --ink-soft: rgba(59,47,34,.62);
-    --serif: 'Cormorant Garamond', serif;
-    --sans: 'Jost', sans-serif;
+    --serif: 'Fraunces', serif;
+    --sans: 'Manrope', sans-serif;
   }
 
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -225,6 +225,9 @@
     position:absolute;
     inset:0;
     z-index:0;
+    transform:translate3d(0, var(--hero-shift, 0px), 0) scale(1.04);
+    will-change:transform;
+    transition:transform .15s linear;
   }
   /* desktop: 3 imagens lado a lado */
   .hero-carousel-track{
@@ -342,9 +345,19 @@
   .reveal{
     opacity:0;
     transform:translateY(28px);
-    transition:opacity .9s ease, transform .9s ease;
+    filter:blur(4px);
+    transition:opacity .9s ease, transform .9s ease, filter .9s ease;
   }
-  .reveal.in{opacity:1;transform:translateY(0);}
+  .reveal.in{opacity:1;transform:translateY(0);filter:blur(0);}
+  .vitrine .peca-card.reveal:nth-child(2){transition-delay:.12s;}
+  .vitrine .peca-card.reveal:nth-child(3){transition-delay:.24s;}
+  .depo-grid .depo-card.reveal:nth-child(2){transition-delay:.12s;}
+  .depo-grid .depo-card.reveal:nth-child(3){transition-delay:.24s;}
+
+  @media (prefers-reduced-motion: reduce){
+    .hero-carousel{transform:none;transition:none;}
+    .reveal{filter:none;transform:none;transition:opacity .01ms;}
+  }
 
   /* ===== SOBRE ===== */
   .sobre{padding:130px 0 110px;}
@@ -405,6 +418,16 @@
   .section-head .eyebrow{display:block;margin-bottom:14px;}
   .section-head .headline{margin-bottom:16px;}
   .section-head .lede{margin:0 auto;text-align:center;}
+  .pecas .section-head .lede{
+    max-width:34ch;
+    margin:0;
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:clamp(1.35rem, 2.4vw, 1.8rem);
+    font-weight:600;
+    line-height:1.35;
+    text-align:left;
+  }
 
   .vitrine{
     display:grid;
@@ -700,8 +723,6 @@
   <nav class="desktop-nav">
     <a href="#sobre">Sobre</a>
     <a href="#pecas">Peças</a>
-    <a href="#depoimentos">Depoimentos</a>
-    <a href="#politicas">Políticas</a>
     <a href="#visite">Visite-nos</a>
   </nav>
   <button class="menu-btn" id="menuBtn" aria-label="Abrir menu"><span></span></button>
@@ -710,8 +731,6 @@
 <div class="mobile-nav" id="mobileNav">
   <a href="#sobre">Sobre</a>
   <a href="#pecas">Peças</a>
-  <a href="#depoimentos">Depoimentos</a>
-  <a href="#politicas">Políticas</a>
   <a href="#visite">Visite-nos</a>
 </div>
 
@@ -739,9 +758,8 @@
 <section class="sobre" id="sobre">
   <div class="wrap grid">
     <div class="sobre-text reveal">
-      <span class="eyebrow">Apresentação</span>
       <h2 class="headline">Uma loja pensada para os <em>primeiros anos</em></h2>
-      <p class="lede">A Amié nasceu do desejo de vestir a infância com delicadeza. Cada peça é escolhida pensando no conforto, na leveza dos tecidos e no charme dessa fase que passa rápido — moda infantil feita para durar na memória, não só no guarda-roupa.</p>
+      <p class="lede">A Amié nasceu do desejo de vestir a infância com delicadeza. Cada peça é escolhida pensando no conforto, na leveza dos tecidos e no charme dessa fase que passa rápido. Moda infantil feita para durar na memória, não só no guarda-roupa.</p>
       <p class="assinatura">— Amié Baby</p>
     </div>
     <div class="sobre-visual reveal">
@@ -755,26 +773,24 @@
 <section class="pecas" id="pecas">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow">Vitrine</span>
-      <h2 class="headline">Nossas peças</h2>
-      <p class="lede">Confira alguns dos looks e lançamentos da Amié — peças escolhidas com cuidado para a sua criança.</p>
+      <p class="lede">Confira alguns dos lançamentos da Amié.</p>
     </div>
-    <div class="vitrine reveal">
-      <div class="peca-card">
+    <div class="vitrine">
+      <div class="peca-card reveal">
         <img src="peca-01.jpeg" alt="Peça 01">
         <div class="peca-footer">
           <svg class="petal-icon" viewBox="0 0 100 100"><path d="M50 12 C56 20 62 24 62 32 C62 44 56 52 50 58 C44 52 38 44 38 32 C38 24 44 20 50 12 Z"/></svg>
         </div>
         <span class="peca-line"></span>
       </div>
-      <div class="peca-card">
+      <div class="peca-card reveal">
         <img src="peca-02.jpeg" alt="Peça 02">
         <div class="peca-footer">
           <svg class="petal-icon" viewBox="0 0 100 100"><path d="M50 12 C56 20 62 24 62 32 C62 44 56 52 50 58 C44 52 38 44 38 32 C38 24 44 20 50 12 Z"/></svg>
         </div>
         <span class="peca-line"></span>
       </div>
-      <div class="peca-card">
+      <div class="peca-card reveal">
         <img src="peca-03.jpeg" alt="Peça 03">
         <div class="peca-footer">
           <svg class="petal-icon" viewBox="0 0 100 100"><path d="M50 12 C56 20 62 24 62 32 C62 44 56 52 50 58 C44 52 38 44 38 32 C38 24 44 20 50 12 Z"/></svg>
@@ -789,24 +805,22 @@
 <section class="depoimentos" id="depoimentos">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow">Depoimentos</span>
       <h2 class="headline">O que as famílias dizem</h2>
-      <p class="lede">Exemplo de como a seção fica — os depoimentos reais entram assim que forem definidos.</p>
     </div>
-    <div class="depo-grid reveal">
-      <div class="depo-card">
+    <div class="depo-grid">
+      <div class="depo-card reveal">
         <span class="tag-example">exemplo</span>
         <span class="quote-mark">“</span>
         <p>Peças lindas e um atendimento que parece feito sob medida para cada mamãe.</p>
         <span class="author">Cliente Amié</span>
       </div>
-      <div class="depo-card">
+      <div class="depo-card reveal">
         <span class="tag-example">exemplo</span>
         <span class="quote-mark">“</span>
         <p>Qualidade que a gente sente no tecido, e um cuidado que aparece em cada detalhe.</p>
         <span class="author">Cliente Amié</span>
       </div>
-      <div class="depo-card">
+      <div class="depo-card reveal">
         <span class="tag-example">exemplo</span>
         <span class="quote-mark">“</span>
         <p>Virou a primeira loja que eu olho quando preciso de algo especial para ela.</p>
@@ -820,25 +834,23 @@
 <section class="politicas" id="politicas">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow">Políticas</span>
       <h2 class="headline">Como cuidamos de cada compra</h2>
-      <p class="lede">Exemplo de estrutura — os textos definitivos entram aqui.</p>
     </div>
     <div class="pol-grid reveal">
       <div class="pol-item">
         <svg class="petal-icon" viewBox="0 0 100 100"><path d="M50 12 C56 20 62 24 62 32 C62 44 56 52 50 58 C44 52 38 44 38 32 C38 24 44 20 50 12 Z"/></svg>
         <h3>Trocas e devoluções</h3>
-        <p>Conteúdo a confirmar com a loja.</p>
+        <p>Conteúdo a confirmar.</p>
       </div>
       <div class="pol-item">
         <svg class="petal-icon" viewBox="0 0 100 100"><path d="M50 12 C56 20 62 24 62 32 C62 44 56 52 50 58 C44 52 38 44 38 32 C38 24 44 20 50 12 Z"/></svg>
         <h3>Formas de pagamento</h3>
-        <p>Conteúdo a confirmar com a loja.</p>
+        <p>Conteúdo a confirmar.</p>
       </div>
       <div class="pol-item">
         <svg class="petal-icon" viewBox="0 0 100 100"><path d="M50 12 C56 20 62 24 62 32 C62 44 56 52 50 58 C44 52 38 44 38 32 C38 24 44 20 50 12 Z"/></svg>
         <h3>Envio</h3>
-        <p>Conteúdo a confirmar com a loja.</p>
+        <p>Conteúdo a confirmar.</p>
       </div>
     </div>
   </div>
@@ -848,7 +860,6 @@
 <section class="visite" id="visite">
   <div class="wrap grid">
     <div class="visite-text reveal">
-      <span class="eyebrow">Visite-nos</span>
       <h2 class="headline">Estamos por perto</h2>
       <div class="info-list">
         <div class="info-row">
@@ -884,8 +895,6 @@
     <nav class="foot-nav">
       <a href="#sobre">Sobre</a>
       <a href="#pecas">Peças</a>
-      <a href="#depoimentos">Depoimentos</a>
-      <a href="#politicas">Políticas</a>
       <a href="#visite">Visite-nos</a>
     </nav>
     <div class="socials">
@@ -903,6 +912,21 @@
   window.addEventListener('scroll', () => {
     header.classList.toggle('scrolled', window.scrollY > 40);
   });
+
+  // parallax discreto no fundo do hero
+  const hero = document.querySelector('.hero');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let parallaxFrame = null;
+  function updateHeroParallax(){
+    parallaxFrame = null;
+    if (reduceMotion || !hero) return;
+    const progress = Math.max(-1, Math.min(1, -hero.getBoundingClientRect().top / hero.offsetHeight));
+    hero.style.setProperty('--hero-shift', `${progress * 34}px`);
+  }
+  window.addEventListener('scroll', () => {
+    if (!parallaxFrame) parallaxFrame = requestAnimationFrame(updateHeroParallax);
+  }, { passive:true });
+  updateHeroParallax();
 
   // menu mobile
   const menuBtn = document.getElementById('menuBtn');

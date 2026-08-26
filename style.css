@@ -6,8 +6,8 @@
   --gold-faint: rgba(186,144,89,.10);
   --ink:#3B2F22;
   --ink-soft: rgba(59,47,34,.62);
-  --serif: 'Cormorant Garamond', serif;
-  --sans: 'Jost', sans-serif;
+  --serif: 'Fraunces', serif;
+  --sans: 'Manrope', sans-serif;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
