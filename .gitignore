@@ -1,1 +1,17 @@
+# Dependências locais
 node_modules/
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Logs e temporários
+*.log
+*.tmp
+
+# Se quiser ignorar originais pesadas no futuro, pode adicionar:
+# *.jpg
+# *.jpeg
+# *.png
+# *.tiff
+
