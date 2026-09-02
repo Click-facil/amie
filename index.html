@@ -689,10 +689,15 @@
     opacity:0;
     transition:transform .45s cubic-bezier(.22,1,.36,1), opacity .3s ease;
   }
-  .peca-card:hover .peca-panel,
   .peca-card.is-open .peca-panel{
     opacity:1;
     transform:translateY(0);
+  }
+  @media (min-width:841px){
+    .peca-card:hover .peca-panel{
+      opacity:1;
+      transform:translateY(0);
+    }
   }
   .peca-panel-head{
     display:flex;
