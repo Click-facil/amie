@@ -369,8 +369,8 @@
     opacity:0;
     animation:rise 1s ease forwards 1.5s;
   }
-  .hero .btn-gold .btn-arrow{display:block;width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .35s ease;}
-  .hero .btn-gold:hover .btn-arrow{transform:translateX(3px);}
+  .hero .btn-gold .btn-arrow{display:block;width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .45s cubic-bezier(.22,1,.36,1);}
+  .hero .btn-gold:hover .btn-arrow{transform:translateX(4px);}
   .hero-sub .dot{color:var(--gold);margin:0 10px;}
   @keyframes rise{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
 
@@ -737,28 +737,36 @@
     max-height:4.6em;
     overflow:hidden;
   }
-
   .peca-toggle-wrap{
     margin-top:18px;
     display:flex;
     justify-content:center;
   }
-  .btn-toggle{
-    border:1px solid rgba(186,144,89,.7);
-    background:transparent;
-    color:var(--ink);
+  .btn-toggle,
+  .btn-gold{
+    position:relative;
+    overflow:hidden;
+    isolation:isolate;
+    border:1px solid var(--gold);
+    background:linear-gradient(110deg, var(--gold) 0 50%, #c5a678 50% 100%);
+    background-size:220% 100%;
+    background-position:100% 0;
+    color:#fff;
     border-radius:999px;
     padding:12px 20px;
     font-size:.68rem;
     letter-spacing:.16em;
     text-transform:uppercase;
     cursor:pointer;
-    transition:all .35s ease;
+    box-shadow:0 8px 20px rgba(59,47,34,.12);
+    transition:background-position .55s cubic-bezier(.22,1,.36,1), transform .35s ease, box-shadow .35s ease, border-color .35s ease;
   }
-  .btn-toggle:hover{
-    background:var(--gold);
-    border-color:var(--gold);
-    color:#fff;
+  .btn-toggle:hover,
+  .btn-gold:hover{
+    background-position:0 0;
+    border-color:#a37e4c;
+    transform:translateY(-2px);
+    box-shadow:0 12px 24px rgba(59,47,34,.18);
   }
 
   @media (max-width:1024px){
@@ -922,25 +930,39 @@
     .map-frame{order:-1;aspect-ratio:16/10;}
   }
 
-  .cta-row{margin-top:36px;}
+  .cta-row{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:12px;
+    margin-top:36px;
+  }
+  .cta-row .btn-gold{
+    width:200px;
+    justify-content:center;
+    box-sizing:border-box;
+    white-space:nowrap;
+  }
   .btn-gold{
     display:inline-flex;
     align-items:center;
     gap:12px;
-    background:var(--gold);
-    color:var(--cream);
     padding:12px 22px;
-    border:1px solid rgba(242,233,228,.55);
-    border-radius:999px;
-    font-size:.68rem;
-    letter-spacing:.17em;
     text-transform:uppercase;
     font-weight:500;
-    box-shadow:0 8px 20px rgba(59,47,34,.12);
-    transition:background .35s ease, transform .35s ease, box-shadow .35s ease;
   }
-  .btn-gold:hover{background:#a37e4c;transform:translateY(-2px);box-shadow:0 12px 24px rgba(59,47,34,.18);}
   .btn-gold .instagram-icon{width:16px;height:16px;flex-shrink:0;}
+  .btn-gold .whatsapp-icon{width:16px;height:16px;flex-shrink:0;}
+  @media (max-width:840px){
+    .cta-row{
+      align-items:center;
+      gap:8px;
+    }
+    .cta-row .btn-gold{
+      width:min(220px, 100%);
+      padding:10px 16px;
+    }
+  }
 
   /* ===== FOOTER ===== */
   footer{
@@ -1030,7 +1052,7 @@
   <div class="bloom b2"></div>
   <img class="hero-logo" src="images/amie-logo.webp" alt="Amié Baby" decoding="async">
   <p class="hero-tag">Vestir a infância com <em>delicadeza</em></p>
-  <a class="btn-gold" href="#sobre">Conheça a Amié <svg class="btn-arrow" viewBox="0 0 18 16" aria-hidden="true"><path d="M2 8h13M10 3.5 15 8l-5 4.5"/></svg></a>
+  <a class="btn-gold" href="https://wa.me/5591984171429?text=Ol%C3%A1!%20Gostaria%20de%20conhecer%20a%20Ami%C3%A9%20Baby." target="_blank" rel="noopener">Fale com a gente <svg class="btn-arrow" viewBox="0 0 18 16" aria-hidden="true"><path d="M2 8h13M10 3.5 15 8l-5 4.5"/></svg></a>
   <div class="scroll-cue"></div>
 </section>
 
@@ -1420,7 +1442,8 @@
         </div>
       </div>
       <div class="cta-row">
-        <a class="btn-gold" href="https://instagram.com" target="_blank" rel="noopener"><svg class="instagram-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1"/></svg>Seguir no Instagram</a>
+        <a class="btn-gold" href="https://www.instagram.com/useamiebaby/" target="_blank" rel="noopener"><svg class="instagram-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1"/></svg>Seguir no Instagram</a>
+        <a class="btn-gold" href="https://wa.me/5591984171429?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20a%20Ami%C3%A9%20Baby." target="_blank" rel="noopener"><svg class="whatsapp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"/><path d="M8.5 9.2c.3 2 1.8 3.8 3.8 4.6.5.2 1 .3 1.4-.1l.7-.8c.2-.2.1-.5-.1-.6l-1.2-.6c-.2-.1-.4 0-.5.2l-.3.4c-.8-.4-1.5-1.1-1.9-1.9l.4-.3c.2-.1.2-.3.2-.5l-.6-1.2c-.1-.2-.4-.3-.6-.1l-.8.7c-.4.3-.6.7-.5 1.2Z"/></svg>Fale com a Amié</a>
       </div>
     </div>
     <div class="map-frame reveal">
@@ -1439,7 +1462,7 @@
       <a href="#visite">Visite-nos</a>
     </nav>
     <div class="socials">
-      <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+      <a href="https://www.instagram.com/useamiebaby/" target="_blank" rel="noopener" aria-label="Instagram">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1"/></svg>
       </a>
     </div>
