@@ -357,6 +357,7 @@
   }
   .hero .btn-gold{
     position:relative;
+    overflow:hidden;
     z-index:2;
     margin-top:28px;
     gap:12px;
@@ -368,6 +369,23 @@
     box-shadow:0 8px 20px rgba(59,47,34,.12);
     opacity:0;
     animation:rise 1s ease forwards 1.5s;
+  }
+  .hero .btn-gold::after{
+    content:'';
+    position:absolute;
+    top:-35%;
+    bottom:-35%;
+    left:-28%;
+    width:18%;
+    background:rgba(255,255,255,.24);
+    transform:skewX(-20deg) translateX(-260%);
+    pointer-events:none;
+    animation:hero-flash 5.8s ease-in-out infinite 2.4s;
+  }
+  @keyframes hero-flash{
+    0%,62%,100%{transform:skewX(-20deg) translateX(-260%);opacity:0;}
+    68%{opacity:.7;}
+    78%{transform:skewX(-20deg) translateX(760%);opacity:0;}
   }
   .hero .btn-gold .btn-arrow{display:block;width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .45s cubic-bezier(.22,1,.36,1);}
   .hero .btn-gold:hover .btn-arrow{transform:translateX(4px);}
@@ -1052,7 +1070,7 @@
   <div class="bloom b2"></div>
   <img class="hero-logo" src="images/amie-logo.webp" alt="Amié Baby" decoding="async">
   <p class="hero-tag">Vestir a infância com <em>delicadeza</em></p>
-  <a class="btn-gold" href="https://wa.me/5591984171429?text=Ol%C3%A1!%20Gostaria%20de%20conhecer%20a%20Ami%C3%A9%20Baby." target="_blank" rel="noopener">Fale com a gente <svg class="btn-arrow" viewBox="0 0 18 16" aria-hidden="true"><path d="M2 8h13M10 3.5 15 8l-5 4.5"/></svg></a>
+  <a class="btn-gold" href="https://wa.me/5595984171429?text=Ol%C3%A1!%20Gostaria%20de%20conhecer%20a%20Ami%C3%A9%20Baby." target="_blank" rel="noopener">Fale com a gente <svg class="btn-arrow" viewBox="0 0 18 16" aria-hidden="true"><path d="M2 8h13M10 3.5 15 8l-5 4.5"/></svg></a>
   <div class="scroll-cue"></div>
 </section>
 
