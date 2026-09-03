@@ -777,7 +777,7 @@
   }
 
   /* ===== DEPOIMENTOS ===== */
-  .depoimentos{padding:120px 0;}
+  .depoimentos{display:none;padding:120px 0;}
   .depo-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -827,7 +827,17 @@
     gap:44px;
   }
   .pol-item{text-align:center;}
-  .pol-item .petal-icon{width:40px;height:40px;margin:0 auto 20px;}
+  .pol-item .pol-icon{
+    width:58px;
+    height:58px;
+    margin:0 auto 20px;
+    padding:12px;
+    display:block;
+    color:var(--gold);
+    border:1px solid rgba(186,144,89,.72);
+    border-radius:50%;
+    box-shadow:0 8px 18px rgba(59,47,34,.12);
+  }
   .pol-item h3{
     font-family:var(--serif);
     font-weight:600;
@@ -1358,19 +1368,30 @@
     </div>
     <div class="pol-grid reveal">
       <div class="pol-item">
-        <svg class="petal-icon" viewBox="0 0 100 100"><path d="M50 12 C56 20 62 24 62 32 C62 44 56 52 50 58 C44 52 38 44 38 32 C38 24 44 20 50 12 Z"/></svg>
-        <h3>Trocas e devoluções</h3>
-        <p>Conteúdo a confirmar.</p>
+        <svg class="pol-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M10 12.5A5.5 5.5 0 0 1 15.5 7h17A5.5 5.5 0 0 1 38 12.5v12a5.5 5.5 0 0 1-5.5 5.5H23l-7.5 6v-6h0A5.5 5.5 0 0 1 10 24.5z"/>
+          <path d="M17 17h14M17 22h9"/>
+        </svg>
+        <h3>Atendimento facilitado</h3>
+        <p>Estamos à disposição para ajudar você a escolher com carinho.</p>
       </div>
       <div class="pol-item">
-        <svg class="petal-icon" viewBox="0 0 100 100"><path d="M50 12 C56 20 62 24 62 32 C62 44 56 52 50 58 C44 52 38 44 38 32 C38 24 44 20 50 12 Z"/></svg>
+        <svg class="pol-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="7" y="12" width="34" height="24" rx="3"/>
+          <path d="M7 19h34M13 28h8"/>
+        </svg>
         <h3>Formas de pagamento</h3>
-        <p>Conteúdo a confirmar.</p>
+        <p>Pix, débito e crédito.</p>
       </div>
       <div class="pol-item">
-        <svg class="petal-icon" viewBox="0 0 100 100"><path d="M50 12 C56 20 62 24 62 32 C62 44 56 52 50 58 C44 52 38 44 38 32 C38 24 44 20 50 12 Z"/></svg>
+        <svg class="pol-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 14h24v18H6zM30 20h6l6 6v6H30z"/>
+          <circle cx="14" cy="35" r="3"/>
+          <circle cx="35" cy="35" r="3"/>
+          <path d="M30 27h11"/>
+        </svg>
         <h3>Envio</h3>
-        <p>Conteúdo a confirmar.</p>
+        <p>Entregas em Dom Eliseu e regiões próximas.</p>
       </div>
     </div>
   </div>
@@ -1380,21 +1401,21 @@
 <section class="visite" id="visite">
   <div class="wrap grid">
     <div class="visite-text reveal">
-      <h2 class="headline">Estamos por perto</h2>
+      <h2 class="headline">Receba onde estiver</h2>
       <div class="info-list">
         <div class="info-row">
           <svg class="petal-icon" viewBox="0 0 100 100"><path d="M50 12 C56 20 62 24 62 32 C62 44 56 52 50 58 C44 52 38 44 38 32 C38 24 44 20 50 12 Z"/></svg>
           <div>
             <div class="info-label">Horário de atendimento</div>
-            <div class="info-value">09h às 18h</div>
+            <div class="info-value">8h às 19h, todos os dias</div>
           </div>
         </div>
         <div class="info-row">
           <svg class="petal-icon" viewBox="0 0 100 100"><path d="M50 12 C56 20 62 24 62 32 C62 44 56 52 50 58 C44 52 38 44 38 32 C38 24 44 20 50 12 Z"/></svg>
           <div>
-            <div class="info-label">Endereço</div>
-            <div class="info-value">Dom Eliseu — PA</div>
-            <div class="info-note">endereço completo em breve</div>
+            <div class="info-label">Região de atendimento</div>
+            <div class="info-value">Dom Eliseu e regiões próximas</div>
+            <div class="info-note">Atendimento somente por encomenda e entrega.</div>
           </div>
         </div>
       </div>
@@ -1403,8 +1424,8 @@
       </div>
     </div>
     <div class="map-frame reveal">
-      <iframe src="https://www.google.com/maps?q=Dom+Eliseu,PA&output=embed" loading="lazy" allowfullscreen title="Mapa - Dom Eliseu, PA"></iframe>
-      <span class="map-tag">Dom Eliseu — PA</span>
+      <iframe src="https://maps.google.com/maps?q=Dom+Eliseu+-+PA&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="Mapa da região de Dom Eliseu, PA"></iframe>
+      <span class="map-tag">Atendimento por encomenda</span>
     </div>
   </div>
 </section>
