@@ -860,24 +860,42 @@
     .depo-grid{grid-template-columns:1fr;gap:20px;}
   }
 
-  /* ===== POLÍTICAS ===== */
+  /* ===== COMO FUNCIONA ===== */
   .politicas{background:var(--sand);padding:110px 0;}
   .pol-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:44px;
+    position:relative;
+  }
+  .pol-grid::before{
+    content:'';
+    position:absolute;
+    top:29px;
+    left:calc(16.666% + 10px);
+    right:calc(16.666% + 10px);
+    height:1px;
+    background:linear-gradient(90deg, var(--gold-soft), rgba(186,144,89,.5), var(--gold-soft));
+    pointer-events:none;
   }
   .pol-item{text-align:center;}
-  .pol-item .pol-icon{
+  .pol-item .pol-step{
     width:58px;
     height:58px;
     margin:0 auto 20px;
-    padding:12px;
-    display:block;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     color:var(--gold);
     border:1px solid rgba(186,144,89,.72);
     border-radius:50%;
+    background:var(--sand);
     box-shadow:0 8px 18px rgba(59,47,34,.12);
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:1.4rem;
+    position:relative;
+    z-index:1;
   }
   .pol-item h3{
     font-family:var(--serif);
@@ -894,6 +912,7 @@
 
   @media (max-width:840px){
     .pol-grid{grid-template-columns:1fr;gap:40px;}
+    .pol-grid::before{display:none;}
   }
 
   /* ===== VISITE-NOS ===== */
@@ -1415,38 +1434,44 @@
   </div>
 </section>
 
-<!-- POLÍTICAS -->
+<!-- COMO FUNCIONA -->
 <section class="politicas" id="politicas">
   <div class="wrap">
     <div class="section-head reveal">
-      <h2 class="headline">Tudo pensado com cuidado.</h2>
+      <h2 class="headline">Tudo pensado com carinho.</h2>
     </div>
     <div class="pol-grid reveal">
       <div class="pol-item">
-        <svg class="pol-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M10 12.5A5.5 5.5 0 0 1 15.5 7h17A5.5 5.5 0 0 1 38 12.5v12a5.5 5.5 0 0 1-5.5 5.5H23l-7.5 6v-6h0A5.5 5.5 0 0 1 10 24.5z"/>
-          <path d="M17 17h14M17 22h9"/>
-        </svg>
-        <h3>Atendimento facilitado</h3>
-        <p>Estamos à disposição para ajudar você a escolher com carinho.</p>
+        <div class="pol-step">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="26" height="26">
+            <path d="M18 7h12M15 7l-7 8 5 3v23h22V18l5-3-7-8"/>
+            <path d="M18 7c0 3.3 2.7 6 6 6s6-2.7 6-6"/>
+          </svg>
+        </div>
+        <h3>Escolha a peça</h3>
+        <p>Navegue pela coleção e se apaixone pela peça certa.</p>
       </div>
       <div class="pol-item">
-        <svg class="pol-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <rect x="7" y="12" width="34" height="24" rx="3"/>
-          <path d="M7 19h34M13 28h8"/>
-        </svg>
-        <h3>Formas de pagamento</h3>
-        <p>Pix, débito e crédito.</p>
+        <div class="pol-step">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="26" height="26">
+            <path d="M10 12.5A5.5 5.5 0 0 1 15.5 7h17A5.5 5.5 0 0 1 38 12.5v12a5.5 5.5 0 0 1-5.5 5.5H23l-7.5 6v-6A5.5 5.5 0 0 1 10 24.5z"/>
+            <path d="M17 17h14M17 22h9"/>
+          </svg>
+        </div>
+        <h3>Fale com a gente</h3>
+        <p>Mande uma mensagem no WhatsApp.</p>
       </div>
       <div class="pol-item">
-        <svg class="pol-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M6 14h24v18H6zM30 20h6l6 6v6H30z"/>
-          <circle cx="14" cy="35" r="3"/>
-          <circle cx="35" cy="35" r="3"/>
-          <path d="M30 27h11"/>
-        </svg>
-        <h3>Envio</h3>
-        <p>Entregas em Dom Eliseu e regiões próximas.</p>
+        <div class="pol-step">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="26" height="26">
+            <path d="M6 14h24v18H6zM30 20h6l6 6v6H30z"/>
+            <circle cx="14" cy="35" r="3"/>
+            <circle cx="35" cy="35" r="3"/>
+            <path d="M30 27h11"/>
+          </svg>
+        </div>
+        <h3>Combine a entrega</h3>
+        <p>Entregamos em Dom Eliseu e regiões próximas.</p>
       </div>
     </div>
   </div>
