@@ -456,10 +456,9 @@
   .reveal{
     opacity:0;
     transform:translateY(28px);
-    filter:blur(4px);
-    transition:opacity .9s ease, transform .9s ease, filter .9s ease;
+    transition:opacity .9s ease, transform .9s ease;
   }
-  .reveal.in{opacity:1;transform:translateY(0);filter:blur(0);}
+  .reveal.in{opacity:1;transform:translateY(0);}
   .vitrine .peca-card.reveal:nth-child(2){transition-delay:.12s;}
   .vitrine .peca-card.reveal:nth-child(3){transition-delay:.24s;}
   .vitrine .peca-card.reveal:nth-child(4){transition-delay:.36s;}
@@ -468,7 +467,7 @@
 
   @media (prefers-reduced-motion: reduce){
     .hero-carousel{transform:none;transition:none;}
-    .reveal{filter:none;transform:none;transition:opacity .01ms;}
+    .reveal{transform:none;transition:opacity .01ms;}
   }
 
   /* ===== SOBRE ===== */
@@ -1160,7 +1159,7 @@
     <div class="vitrine" id="productGrid">
       <article class="peca-card reveal is-tall" data-name="Romper Amélie" data-sizes="A definir" data-description="Macacão delicado com estampa vichy, gola branca e laço frontal." data-photos="images/peca-2.webp,images/peca-2.1.webp" data-colors="azul-bebê:images/peca-2.webp,images/peca-2.1.webp|rosa-bebê:images/peca-3.webp,images/peca-3.1.webp">
         <div class="peca-media">
-          <img src="images/peca-2.webp" alt="Macacão - azul bebê" loading="lazy" decoding="async">
+          <img src="images/peca-2.webp" alt="Macacão - azul bebê" loading="lazy" decoding="async" width="600" height="800">
           <div class="peca-colors" aria-label="Escolha a cor">
             <button class="peca-color is-active" type="button" data-color="azul-bebê" aria-label="Azul bebê" title="Azul bebê"></button>
             <button class="peca-color" type="button" data-color="rosa-bebê" aria-label="Rosa bebê" title="Rosa bebê"></button>
@@ -1180,7 +1179,7 @@
 
       <article class="peca-card reveal is-tall" data-name="Vestido Catérine" data-sizes="A definir" data-description="Vestido bordado em azul-marinho com mangas bufantes e saia soltinha." data-photos="images/peca-6.webp,images/peca-6.1.webp">
         <div class="peca-media">
-          <img src="images/peca-6.webp" alt="Vestido Catérine" loading="lazy" decoding="async">
+          <img src="images/peca-6.webp" alt="Vestido Catérine" loading="lazy" decoding="async" width="600" height="800">
           <div class="peca-dots" aria-hidden="true"></div>
         </div>
         <div class="peca-meta">
@@ -1196,7 +1195,7 @@
 
       <article class="peca-card reveal is-compact" data-name="Vestido Liz" data-sizes="A definir" data-description="Vestido em rosa com estampa de poás e mangas franzidas." data-photos="images/peca-7.webp">
         <div class="peca-media">
-          <img src="images/peca-7.webp" alt="Vestido Liz" loading="lazy" decoding="async">
+          <img src="images/peca-7.webp" alt="Vestido Liz" loading="lazy" decoding="async" width="600" height="800">
           <div class="peca-dots" aria-hidden="true"></div>
         </div>
         <div class="peca-meta">
@@ -1212,7 +1211,7 @@
 
       <article class="peca-card reveal is-tall" data-name="Vestido Jolie" data-sizes="A definir" data-description="Vestido delicado em algodão com laço frontal e saia franzida." data-photos="images/peca-8.webp,images/peca-8.1.webp">
         <div class="peca-media">
-          <img src="images/peca-8.webp" alt="Vestido Jolie" loading="lazy" decoding="async">
+          <img src="images/peca-8.webp" alt="Vestido Jolie" loading="lazy" decoding="async" width="600" height="800">
           <div class="peca-dots" aria-hidden="true"></div>
         </div>
         <div class="peca-meta">
@@ -1228,7 +1227,7 @@
 
       <article class="peca-card reveal is-hidden" data-name="Vestido Celine" data-sizes="A definir" data-description="Vestido em azul-marinho e bege com gola branca e bordados delicados." data-photos="images/peca-10.webp" data-colors="azul-marinho:images/peca-10.webp|bege:images/peca-10.1.webp">
         <div class="peca-media">
-          <img src="images/peca-10.webp" alt="Vestido Celine - azul marinho" loading="lazy" decoding="async">
+          <img src="images/peca-10.webp" alt="Vestido Celine - azul marinho" loading="lazy" decoding="async" width="600" height="800">
           <div class="peca-colors" aria-label="Escolha a cor">
             <button class="peca-color is-active" type="button" data-color="azul-marinho" aria-label="Azul marinho" title="Azul marinho" style="background:#203e5b"></button>
             <button class="peca-color" type="button" data-color="bege" aria-label="Bege" title="Bege" style="background:#d9c7af"></button>
@@ -1248,7 +1247,7 @@
 
       <article class="peca-card reveal is-hidden" data-name="Vestido Clhoé" data-sizes="A definir" data-description="Vestido delicado com gola sobreposta e bordados florais em tons de rosa e bege." data-photos="images/peca-12.webp,images/peca-12.1.webp">
         <div class="peca-media">
-          <img src="images/peca-12.webp" alt="Vestido Clhoé" loading="lazy" decoding="async">
+          <img src="images/peca-12.webp" alt="Vestido Clhoé" loading="lazy" decoding="async" width="600" height="800">
           <div class="peca-dots" aria-hidden="true"></div>
         </div>
         <div class="peca-meta">
@@ -1264,7 +1263,7 @@
 
       <article class="peca-card reveal is-hidden" data-name="Vestido Melina" data-sizes="A definir" data-description="Vestido em tricoline com estampa xadrez e detalhes delicados no busto." data-photos="images/peca-16.webp,images/peca-16.1.webp,images/peca-16.2.webp">
         <div class="peca-media">
-          <img src="images/peca-16.webp" alt="Vestido Melina" loading="lazy" decoding="async">
+          <img src="images/peca-16.webp" alt="Vestido Melina" loading="lazy" decoding="async" width="600" height="800">
           <div class="peca-dots" aria-hidden="true"></div>
         </div>
         <div class="peca-meta">
@@ -1280,7 +1279,7 @@
 
       <article class="peca-card reveal is-hidden" data-name="Vestido Lumi" data-sizes="A definir" data-description="Vestido em listras vermelhas e brancas com gola e laço frontal delicados." data-photos="images/peca-17.webp">
         <div class="peca-media">
-          <img src="images/peca-17.webp" alt="Vestido Lumi" loading="lazy" decoding="async">
+          <img src="images/peca-17.webp" alt="Vestido Lumi" loading="lazy" decoding="async" width="600" height="800">
           <div class="peca-dots" aria-hidden="true"></div>
         </div>
         <div class="peca-meta">
@@ -1296,7 +1295,7 @@
 
       <article class="peca-card reveal is-hidden" data-name="Vestido Charlotte" data-sizes="A definir" data-description="Vestido azul-marinho com bordados florais delicados e mangas bufantes." data-photos="images/peca-19.webp,images/peca-19.1.webp">
         <div class="peca-media">
-          <img src="images/peca-19.webp" alt="Vestido Charlotte" loading="lazy" decoding="async">
+          <img src="images/peca-19.webp" alt="Vestido Charlotte" loading="lazy" decoding="async" width="600" height="800">
           <div class="peca-dots" aria-hidden="true"></div>
         </div>
         <div class="peca-meta">
@@ -1312,7 +1311,7 @@
 
       <article class="peca-card reveal is-hidden" data-name="Vestido Celina" data-sizes="A definir" data-description="Vestido em listras vermelhas e brancas com mangas bufantes e gola delicada." data-photos="images/peca-20.webp">
         <div class="peca-media">
-          <img src="images/peca-20.webp" alt="Vestido Celina" loading="lazy" decoding="async">
+          <img src="images/peca-20.webp" alt="Vestido Celina" loading="lazy" decoding="async" width="600" height="800">
           <div class="peca-dots" aria-hidden="true"></div>
         </div>
         <div class="peca-meta">
@@ -1328,7 +1327,7 @@
 
       <article class="peca-card reveal is-hidden" data-name="Romper Bordado" data-sizes="A definir" data-description="Macaquinho em listras rosa e branco com bordados florais e gola delicada." data-photos="images/peca-21.webp">
         <div class="peca-media">
-          <img src="images/peca-21.webp" alt="Romper Bordado" loading="lazy" decoding="async">
+          <img src="images/peca-21.webp" alt="Romper Bordado" loading="lazy" decoding="async" width="600" height="800">
           <div class="peca-dots" aria-hidden="true"></div>
         </div>
         <div class="peca-meta">
@@ -1344,7 +1343,7 @@
 
       <article class="peca-card reveal is-hidden" data-name="Conjunto Bordado" data-sizes="A definir" data-description="Conjunto em tricoline rosa-claro com blusa marinheira e short soltinho." data-photos="images/peca-22.webp,images/peca-22.1.webp">
         <div class="peca-media">
-          <img src="images/peca-22.webp" alt="Conjunto Bordado" loading="lazy" decoding="async">
+          <img src="images/peca-22.webp" alt="Conjunto Bordado" loading="lazy" decoding="async" width="600" height="800">
           <div class="peca-dots" aria-hidden="true"></div>
         </div>
         <div class="peca-meta">
@@ -1360,7 +1359,7 @@
 
       <article class="peca-card reveal is-hidden" data-name="Vestido Bordado" data-sizes="A definir" data-description="Vestido em tricoline rosa-claro com pregas, gola arredondada e bordados florais." data-photos="images/peca-24.webp,images/peca-24.1.webp">
         <div class="peca-media">
-          <img src="images/peca-24.webp" alt="Vestido Bordado" loading="lazy" decoding="async">
+          <img src="images/peca-24.webp" alt="Vestido Bordado" loading="lazy" decoding="async" width="600" height="800">
           <div class="peca-dots" aria-hidden="true"></div>
         </div>
         <div class="peca-meta">
@@ -1376,7 +1375,7 @@
 
       <article class="peca-card reveal is-hidden" data-name="Vestido Bordado" data-sizes="A definir" data-description="Vestido amarelo-claro com renda, mangas bufantes e bordados florais delicados." data-photos="images/peca-26.webp,images/peca-26.1.webp">
         <div class="peca-media">
-          <img src="images/peca-26.webp" alt="Vestido Bordado" loading="lazy" decoding="async">
+          <img src="images/peca-26.webp" alt="Vestido Bordado" loading="lazy" decoding="async" width="600" height="800">
           <div class="peca-dots" aria-hidden="true"></div>
         </div>
         <div class="peca-meta">
@@ -1392,7 +1391,7 @@
 
       <article class="peca-card reveal is-hidden" data-name="Vestido Bordado" data-sizes="A definir" data-description="Vestido estampado com listras e flores, gola branca e mangas bufantes." data-photos="images/peca-29.webp,images/peca-29.1.webp">
         <div class="peca-media">
-          <img src="images/peca-29.webp" alt="Vestido Bordado" loading="lazy" decoding="async">
+          <img src="images/peca-29.webp" alt="Vestido Bordado" loading="lazy" decoding="async" width="600" height="800">
           <div class="peca-dots" aria-hidden="true"></div>
         </div>
         <div class="peca-meta">
@@ -1408,7 +1407,7 @@
 
       <article class="peca-card reveal is-hidden" data-name="Vestido Bordado" data-sizes="A definir" data-description="Vestido verde-menta com laços, mangas bufantes e bordados florais delicados." data-photos="images/peca-30.webp">
         <div class="peca-media">
-          <img src="images/peca-30.webp" alt="Vestido Bordado" loading="lazy" decoding="async">
+          <img src="images/peca-30.webp" alt="Vestido Bordado" loading="lazy" decoding="async" width="600" height="800">
           <div class="peca-dots" aria-hidden="true"></div>
         </div>
         <div class="peca-meta">
