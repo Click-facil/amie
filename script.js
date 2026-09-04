@@ -5,11 +5,107 @@ window.addEventListener('scroll', () => {
   header.classList.toggle('scrolled', window.scrollY > 40);
 });
 
+// parallax discreto no fundo do hero
+const hero = document.querySelector('.hero');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let parallaxFrame = null;
+function updateHeroParallax(){
+  parallaxFrame = null;
+  if (reduceMotion || !hero) return;
+  const progress = Math.max(-1, Math.min(1, -hero.getBoundingClientRect().top / hero.offsetHeight));
+  hero.style.setProperty('--hero-shift', `${progress * 34}px`);
+}
+window.addEventListener('scroll', () => {
+  if (!parallaxFrame) parallaxFrame = requestAnimationFrame(updateHeroParallax);
+}, { passive:true });
+updateHeroParallax();
+
 // menu mobile
 const menuBtn = document.getElementById('menuBtn');
 const mobileNav = document.getElementById('mobileNav');
 menuBtn.addEventListener('click', () => mobileNav.classList.toggle('open'));
 mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
+
+// hint mobile: abre e fecha o primeiro card automaticamente
+(function(){
+  if (window.innerWidth > 840) return;
+  if (sessionStorage.getItem('amie-hint')) return;
+  const firstCard = document.querySelector('.peca-card');
+  if (!firstCard) return;
+  setTimeout(() => {
+    firstCard.classList.add('is-open');
+    setTimeout(() => {
+      firstCard.classList.remove('is-open');
+      sessionStorage.setItem('amie-hint', '1');
+    }, 1500);
+  }, 1000);
+})();
+
+// fade-in ao entrar na tela
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// slide mobile hero
+(function(){
+  const track = document.getElementById('heroTrack');
+  const dots = document.querySelectorAll('#heroDots span');
+  const firstSlide = track?.firstElementChild;
+  const totalSlides = dots.length;
+  let cur = 0;
+  let timer;
+
+  if (!track || !firstSlide || totalSlides === 0) return;
+
+  track.appendChild(firstSlide.cloneNode(true));
+
+  function isMobile(){ return window.innerWidth <= 840; }
+  function go(n){
+    cur = n;
+    if(isMobile()) track.style.transform = 'translateX(-'+(100/(totalSlides + 1)*n)+'%)';
+    dots.forEach((d,i) => d.classList.toggle('active', i === (n % totalSlides)));
+  }
+
+  function restartTimer(){
+    clearInterval(timer);
+    timer = setInterval(() => go(cur + 1), 3500);
+  }
+
+  track.addEventListener('transitionend', event => {
+    if (event.propertyName !== 'transform' || cur !== totalSlides) return;
+    track.style.transition = 'none';
+    cur = 0;
+    track.style.transform = 'translateX(0)';
+    dots.forEach((dot,index) => dot.classList.toggle('active', index === 0));
+    track.offsetHeight;
+    track.style.transition = '';
+  });
+
+  dots.forEach((dot,index) => dot.addEventListener('click', () => {
+    clearInterval(timer);
+    track.style.transition = '';
+    go(index);
+    restartTimer();
+  }));
+
+  window.addEventListener('resize', () => {
+    if(!isMobile()){
+      track.style.transition = 'none';
+      track.style.transform = '';
+      cur = 0;
+      track.offsetHeight;
+      track.style.transition = '';
+    }
+  });
+
+  restartTimer();
+})();
 
 // grid de peças
 const productCards = Array.from(document.querySelectorAll('.peca-card'));
@@ -144,14 +240,4 @@ window.addEventListener('resize', () => {
   if (!showingAllCards) syncProductCards();
 });
 
-// fade-in ao entrar na tela
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('in');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.15 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 })();

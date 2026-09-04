@@ -46,7 +46,8 @@
 <meta name="twitter:image" content="https://amiebaby.com.br/images/banner-amie.webp?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
 <style>
   :root{
     --cream:#F2E9E4;
@@ -1111,13 +1112,13 @@
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-desktop-media" aria-hidden="true">
-    <img src="images/banner1-amie.webp" alt="">
+    <img src="images/banner1-amie.webp" alt="" fetchpriority="high" width="1920" height="1080">
   </div>
   <div class="hero-carousel">
     <div class="hero-carousel-track" id="heroTrack">
-      <div class="hero-slide"><img src="images/hero-01.webp" alt="Amié Baby"></div>
-      <div class="hero-slide"><img src="images/hero-02.webp" alt="Amié Baby" loading="lazy" decoding="async"></div>
-      <div class="hero-slide"><img src="images/hero-03.webp" alt="Amié Baby" loading="lazy" decoding="async"></div>
+      <div class="hero-slide"><img src="images/hero-01.webp" alt="Amié Baby" fetchpriority="high" width="800" height="1000"></div>
+      <div class="hero-slide"><img src="images/hero-02.webp" alt="Amié Baby" loading="lazy" decoding="async" width="800" height="1000"></div>
+      <div class="hero-slide"><img src="images/hero-03.webp" alt="Amié Baby" loading="lazy" decoding="async" width="800" height="1000"></div>
     </div>
   </div>
   <div class="hero-dots" id="heroDots">
@@ -1141,8 +1142,8 @@
     </div>
     <div class="sobre-visual reveal">
       <picture>
-        <source media="(max-width: 840px)" srcset="images/banner3-amie.webp">
-        <img src="images/banner4-amie.webp" alt="Criança usando uma peça da Amié em um jardim" loading="lazy" decoding="async">
+        <source media="(max-width: 840px)" srcset="images/banner3-amie.webp" width="800" height="1000">
+        <img src="images/banner4-amie.webp" alt="Criança usando uma peça da Amié em um jardim" loading="lazy" decoding="async" width="800" height="1000">
       </picture>
     </div>
   </div>
@@ -1551,113 +1552,6 @@
   </div>
 </footer>   
 
-<script>
-  // header solidifica ao rolar
-  const header = document.getElementById('siteHeader');
-  window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 40);
-  });
-
-  // parallax discreto no fundo do hero
-  const hero = document.querySelector('.hero');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let parallaxFrame = null;
-  function updateHeroParallax(){
-    parallaxFrame = null;
-    if (reduceMotion || !hero) return;
-    const progress = Math.max(-1, Math.min(1, -hero.getBoundingClientRect().top / hero.offsetHeight));
-    hero.style.setProperty('--hero-shift', `${progress * 34}px`);
-  }
-  window.addEventListener('scroll', () => {
-    if (!parallaxFrame) parallaxFrame = requestAnimationFrame(updateHeroParallax);
-  }, { passive:true });
-  updateHeroParallax();
-
-  // menu mobile
-  const menuBtn = document.getElementById('menuBtn');
-  const mobileNav = document.getElementById('mobileNav');
-  menuBtn.addEventListener('click', () => mobileNav.classList.toggle('open'));
-  mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
-
-  // hint mobile: abre e fecha o primeiro card automaticamente
-  (function(){
-    if (window.innerWidth > 840) return;
-    if (sessionStorage.getItem('amie-hint')) return;
-    const firstCard = document.querySelector('.peca-card');
-    if (!firstCard) return;
-    setTimeout(() => {
-      firstCard.classList.add('is-open');
-      setTimeout(() => {
-        firstCard.classList.remove('is-open');
-        sessionStorage.setItem('amie-hint', '1');
-      }, 1500);
-    }, 1000);
-  })();
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // slide mobile hero
-  (function(){
-    const track = document.getElementById('heroTrack');
-    const dots = document.querySelectorAll('#heroDots span');
-    const firstSlide = track?.firstElementChild;
-    const totalSlides = dots.length;
-    let cur = 0;
-    let timer;
-
-    if (!track || !firstSlide || totalSlides === 0) return;
-
-    track.appendChild(firstSlide.cloneNode(true));
-
-    function isMobile(){ return window.innerWidth <= 840; }
-    function go(n){
-      cur = n;
-      if(isMobile()) track.style.transform = 'translateX(-'+(100/(totalSlides + 1)*n)+'%)';
-      dots.forEach((d,i) => d.classList.toggle('active', i === (n % totalSlides)));
-    }
-
-    function restartTimer(){
-      clearInterval(timer);
-      timer = setInterval(() => go(cur + 1), 3500);
-    }
-
-    track.addEventListener('transitionend', event => {
-      if (event.propertyName !== 'transform' || cur !== totalSlides) return;
-      track.style.transition = 'none';
-      cur = 0;
-      track.style.transform = 'translateX(0)';
-      dots.forEach((dot,index) => dot.classList.toggle('active', index === 0));
-      track.offsetHeight;
-      track.style.transition = '';
-    });
-
-    dots.forEach((dot,index) => dot.addEventListener('click', () => {
-      clearInterval(timer);
-      track.style.transition = '';
-      go(index);
-      restartTimer();
-    }));
-
-    window.addEventListener('resize', () => {
-      if(!isMobile()){
-        track.style.transition = 'none';
-        track.style.transform = '';
-        cur = 0;
-        track.offsetHeight;
-        track.style.transition = '';
-      }
-    });
-
-    restartTimer();
-  })();
-</script>
 <script src="script.js"></script>
 
 </body>
